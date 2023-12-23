@@ -1,5 +1,8 @@
 Hello! I was looking to mess around with data I accumulated over 2022 (and perhaps now 2021 and 2023?). I used Python, and mainly Matplotlib, Pandas, and Numpy. As of 12/23/23, I am currently seeking employment as a software engineer or similar role. Feel free to reach out! Thank you.
 
+All historical data is from IMDB or Wikipedia. Some movies were removed for lack of data. Rating example = PG-13. Score example 9 out of 10.
+
+
 Function Descriptions:
 
 budgetBoxOffice:
@@ -16,5 +19,17 @@ The outlier on the top of the graph is the movie Titanic.
 
 dateAndRatings:
 This function shows the movie Release Dates on the x-axis compared vs my Scores on the y-axis.
-This function shows Relase Date on the x-axis compared vs Score on the y-axis.
 
+numOfRatings:
+This function shows the Worldwide Number of Scores (in millions) on the x-axis compared vs how many I watched in comparison to how popular they are on the y-axis.
+
+ratings:
+This function shows the most four most popular Movie Ratings. The most common movie I watched was rated R.
+
+months:
+This function shows the Months I watched movies on the x-axis compared vs the Number of Movies on the y-axis.
+The most common month that I watched movies in is May with 52 movies.
+
+scores:
+This function shows the movie Scores out of 10 on the x-axis compared vs the Number of Scores I gave on the y-axis.
+The most common scores I gave are 7 and 8 out of 10.

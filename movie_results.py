@@ -42,11 +42,11 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    # scores(inputFilePath, df)
+    scores(inputFilePath, df)
     # months(inputFilePath, df, year)
     # ratings(inputFilePath, df)
     # numOfRatings(inputFilePath, df)
-    dateAndRatings(inputFilePath, df)  # TODO trendline
+    # dateAndRatings(inputFilePath, df)  # TODO trendline
     # runtimeScores(inputFilePath, df)
     # budgetBoxOffice(inputFilePath, df)
 
@@ -166,7 +166,7 @@ def numOfRatings(inputFilePath, df):
     plt.legend()
     bins = [0, 250000, 500000, 750000, 1000000, 1250000, 1500000, 1750000, 2000000]
     plt.hist(integerRatings, bins=bins, edgecolor="black", color="#F9B572")
-    plt.xlabel("Worldwide Number of Scores (by millions)")
+    plt.xlabel("Number of Scores (millions)")
     plt.ylabel("Number Watched")
     plt.title("Worldwide Number of Scores")
     plt.tight_layout()

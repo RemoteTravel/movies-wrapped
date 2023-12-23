@@ -1,6 +1,8 @@
 
 Function Descriptions:
+
 budgetBoxOffice:
+
 This function shows Budget on the x-axis compared vs Box Office returns on the y-axis.
 The graph includes a trendline to fit the graph. The equation, R^2 value and p-value are also included.
     R^2 is a statistical measure that represents the proportion of the variance for a dependent variable that’s explained by an independent variable in a regression model. (Investopedia)

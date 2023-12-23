@@ -1,3 +1,4 @@
+Hello! I was looking to mess around with data I accumulated over 2022 (and perhaps now 2021 and 2023?). I used Python, and mainly Matplotlib, Pandas, and Numpy. As of 12/23/23, I am currently seeking employment as a software engineer or similar role. Feel free to reach out! Thank you.
 
 Function Descriptions:
 

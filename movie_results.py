@@ -205,7 +205,7 @@ def ratings(inputFilePath, df, year):
 
 
 def months(inputFilePath, df, year):
-    dateColumn = df["Start Date"].to_numpy()
+    dateColumn = df["End Date"].to_numpy()
     monthCounter = Counter()
     for date in dateColumn:
         dateLS = date.split()

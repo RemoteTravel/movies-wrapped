@@ -46,8 +46,8 @@ def main(inputFilePath):
     # months(inputFilePath, df)
     # ratings(inputFilePath, df)
     # numOfRatings(inputFilePath, df)
-    # dateAndRatings(inputFilePath, df)
-    # runtimeScores(inputFilePath, df)
+    dateAndRatings(inputFilePath, df)
+    runtimeScores(inputFilePath, df)
     # budgetBoxOffice(inputFilePath, df)
 
 
@@ -86,7 +86,7 @@ def budgetBoxOffice(inputFilePath, df):
     )
     plt.tight_layout()
     plt.savefig("budget_box_office_scatter.png", bbox_inches="tight")
-    # plt.show()
+    plt.show()
     plt.close()
 
 
@@ -146,11 +146,11 @@ def dateAndRatings(inputFilePath, df):
     plt.scatter(dates, ratingValues, color="#116A7B")
     plt.gcf().autofmt_xdate()
     plt.xlabel("Release Date")
-    plt.ylabel("Rating")
-    plt.title("Ratings by Date")
+    plt.ylabel("Score")
+    plt.title("Scores by Date")
     plt.tight_layout()
-    plt.savefig("dates_ratings_time_series.png", bbox_inches="tight")
-    # plt.show()
+    plt.savefig("dates_scores_time_series.png", bbox_inches="tight")
+    plt.show()
     plt.close()
 
 
@@ -171,7 +171,7 @@ def numOfRatings(inputFilePath, df):
     plt.title("Movie Number of Ratings")
     plt.tight_layout()
     plt.savefig("number_of_ratings_histogram.png", bbox_inches="tight")
-    # plt.show()
+    plt.show()
     plt.close()
 
 
@@ -201,7 +201,7 @@ def ratings(inputFilePath, df):
     )
     plt.title("4 Most Popular Ratings")
     plt.savefig("rating_pie_chart.png", bbox_inches="tight")
-    # plt.show()
+    plt.show()
     plt.close()
 
 
@@ -238,7 +238,7 @@ def months(inputFilePath, df):
     plt.ylabel("Count")
     plt.title("Month Counts")
     plt.savefig("months_histogram.png", bbox_inches="tight")
-    # plt.show()
+    plt.show()
     plt.close()
 
 
@@ -255,7 +255,7 @@ def scores(inputFilePath, df):
     plt.ylabel("Number of Ratings")
     plt.tight_layout()
     plt.savefig("scores_histogram.png", bbox_inches="tight")
-    # plt.show()
+    plt.show()
     plt.close()
 
 

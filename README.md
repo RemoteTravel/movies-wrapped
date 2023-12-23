@@ -12,6 +12,9 @@ runtimeScores:
 This function shows Score on the x-axis compared vs Runtime on the y-axis.
 The trendline shows that as runtime increases, so do my ratings of each movie.
 See above for R^2 and p value definitions.
+The outlier on the top of the graph is the movie Titanic.
 
 dateAndRatings:
 This function shows the movie Release Dates on the x-axis compared vs my Scores on the y-axis.
+This function shows Relase Date on the x-axis compared vs Score on the y-axis.
+

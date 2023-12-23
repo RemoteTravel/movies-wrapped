@@ -42,13 +42,13 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    scores(inputFilePath, df)
-    months(inputFilePath, df, year)
-    ratings(inputFilePath, df)
-    numOfRatings(inputFilePath, df)
-    dateAndRatings(inputFilePath, df)
-    runtimeScores(inputFilePath, df)
-    budgetBoxOffice(inputFilePath, df)
+    # scores(inputFilePath, df)
+    # months(inputFilePath, df, year)
+    # ratings(inputFilePath, df)
+    # numOfRatings(inputFilePath, df)
+    dateAndRatings(inputFilePath, df)  # TODO trendline
+    # runtimeScores(inputFilePath, df)
+    # budgetBoxOffice(inputFilePath, df)
 
 
 def budgetBoxOffice(inputFilePath, df):

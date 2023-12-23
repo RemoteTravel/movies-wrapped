@@ -17,7 +17,8 @@ from scipy import stats
 
 filePath = Path(__file__).parent.resolve()
 csvPath = os.path.join(filePath, "Media_Sheet_2022_C.csv")
-folderName2022 = "2022_Graphs"
+year = "2022"
+folderName2022 = year + "_Graphs"
 colorsArr = [
     "#B06161",
     "#F9B572",
@@ -39,10 +40,10 @@ pieColorsArr = [
 ]
 
 
-def main(inputFilePath):
+def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
     scores(inputFilePath, df)
-    months(inputFilePath, df)
+    months(inputFilePath, df, year)
     ratings(inputFilePath, df)
     numOfRatings(inputFilePath, df)
     dateAndRatings(inputFilePath, df)
@@ -161,13 +162,13 @@ def numOfRatings(inputFilePath, df):
 
     plt.figure()
     plt.style.use("fivethirtyeight")
-    plt.axvline(medianInt, color="#545B77", label="Age Median", linewidth=2)
+    plt.axvline(medianInt, color="#545B77", label="Median", linewidth=2)
     plt.legend()
     bins = [0, 250000, 500000, 750000, 1000000, 1250000, 1500000, 1750000, 2000000]
     plt.hist(integerRatings, bins=bins, edgecolor="black", color="#F9B572")
-    plt.xlabel("Number of Ratings (by millions)")
-    plt.ylabel("Number of Movies")
-    plt.title("Movie Number of Ratings")
+    plt.xlabel("Worldwide Number of Scores (by millions)")
+    plt.ylabel("Number Watched")
+    plt.title("Worldwide Number of Scores")
     plt.tight_layout()
     plt.savefig(
         folderName2022 + "/number_of_ratings_histogram.png", bbox_inches="tight"
@@ -206,7 +207,7 @@ def ratings(inputFilePath, df):
     plt.close()
 
 
-def months(inputFilePath, df):
+def months(inputFilePath, df, year):
     dateColumn = df["Start Date"].to_numpy()
     monthCounter = Counter()
     for date in dateColumn:
@@ -236,8 +237,8 @@ def months(inputFilePath, df):
     plt.xticks(xValues, xLabels)
     plt.bar(xValues, counts, color=colorsArr)
     plt.xlabel("Month")
-    plt.ylabel("Count")
-    plt.title("Month Counts")
+    plt.ylabel("Number Watched")
+    plt.title(year + "Month Distribution")
     plt.savefig(folderName2022 + "/months_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
@@ -251,13 +252,13 @@ def scores(inputFilePath, df):
     plt.figure()
     plt.style.use("fivethirtyeight")
     plt.bar(indexArr, valuesArr, color=colorsArr)
-    plt.title("My Ratings")
+    plt.title("My Score Distribution")
     plt.xlabel("Scores")
-    plt.ylabel("Number of Ratings")
+    plt.ylabel("Number of Scores")
     plt.tight_layout()
     plt.savefig(folderName2022 + "/scores_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
 
-main(csvPath)
+main(csvPath, year)

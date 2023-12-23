@@ -19,6 +19,7 @@ from scipy import stats
 filePath = Path(__file__).parent.resolve()
 csvPath = os.path.join(filePath, "Media_Sheet_2022_C.csv")
 tsvPath = os.path.join(filePath, "Media_Sheet_2022_T.tsv")
+folderName2022 = "2022_Graphs"
 colorsArr = [
     "#B06161",
     "#F9B572",
@@ -42,13 +43,13 @@ pieColorsArr = [
 
 def main(inputFilePath):
     df = pd.read_csv(inputFilePath)
-    # scores(inputFilePath, df)
-    # months(inputFilePath, df)
-    # ratings(inputFilePath, df)
-    # numOfRatings(inputFilePath, df)
+    scores(inputFilePath, df)
+    months(inputFilePath, df)
+    ratings(inputFilePath, df)
+    numOfRatings(inputFilePath, df)
     dateAndRatings(inputFilePath, df)
     runtimeScores(inputFilePath, df)
-    # budgetBoxOffice(inputFilePath, df)
+    budgetBoxOffice(inputFilePath, df)
 
 
 def budgetBoxOffice(inputFilePath, df):
@@ -85,7 +86,7 @@ def budgetBoxOffice(inputFilePath, df):
         fontsize=10,
     )
     plt.tight_layout()
-    plt.savefig("budget_box_office_scatter.png", bbox_inches="tight")
+    plt.savefig(folderName2022 + "/budget_box_office_scatter.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -113,7 +114,7 @@ def runtimeScores(inputFilePath, df):
         xycoords="figure fraction",
     )
     plt.tight_layout()
-    plt.savefig("score_runtime_scatter.png", bbox_inches="tight")
+    plt.savefig(folderName2022 + "/score_runtime_scatter.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -149,7 +150,7 @@ def dateAndRatings(inputFilePath, df):
     plt.ylabel("Score")
     plt.title("Scores by Date")
     plt.tight_layout()
-    plt.savefig("dates_scores_time_series.png", bbox_inches="tight")
+    plt.savefig(folderName2022 + "/dates_scores_time_series.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -170,7 +171,9 @@ def numOfRatings(inputFilePath, df):
     plt.ylabel("Number of Movies")
     plt.title("Movie Number of Ratings")
     plt.tight_layout()
-    plt.savefig("number_of_ratings_histogram.png", bbox_inches="tight")
+    plt.savefig(
+        folderName2022 + "/number_of_ratings_histogram.png", bbox_inches="tight"
+    )
     plt.show()
     plt.close()
 
@@ -200,7 +203,7 @@ def ratings(inputFilePath, df):
         autopct="%1.0f%%",
     )
     plt.title("4 Most Popular Ratings")
-    plt.savefig("rating_pie_chart.png", bbox_inches="tight")
+    plt.savefig(folderName2022 + "/rating_pie_chart.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -237,7 +240,7 @@ def months(inputFilePath, df):
     plt.xlabel("Month")
     plt.ylabel("Count")
     plt.title("Month Counts")
-    plt.savefig("months_histogram.png", bbox_inches="tight")
+    plt.savefig(folderName2022 + "/months_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -254,7 +257,7 @@ def scores(inputFilePath, df):
     plt.xlabel("Scores")
     plt.ylabel("Number of Ratings")
     plt.tight_layout()
-    plt.savefig("scores_histogram.png", bbox_inches="tight")
+    plt.savefig(folderName2022 + "/scores_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 

@@ -1,6 +1,5 @@
-# Danny Street | 2022 Movie Wrapped | 12/22/23
-# * See data set here:
-# * https://docs.google.com/spreadsheets/d/1eHPC10QhIu87nBWO4bPcxKpM3lXNmw5JXUVIZen-NgU/edit?usp=sharing
+# Danny Street | 2022 Movie Wrapped | 12/23/23
+# * Contact me if you wish to see my data set
 from matplotlib import pyplot as plt
 from matplotlib import dates as mpl_dates
 from datetime import datetime, timedelta
@@ -18,7 +17,6 @@ from scipy import stats
 
 filePath = Path(__file__).parent.resolve()
 csvPath = os.path.join(filePath, "Media_Sheet_2022_C.csv")
-tsvPath = os.path.join(filePath, "Media_Sheet_2022_T.tsv")
 folderName2022 = "2022_Graphs"
 colorsArr = [
     "#B06161",
@@ -263,4 +261,3 @@ def scores(inputFilePath, df):
 
 
 main(csvPath)
-# main(tsvPath)

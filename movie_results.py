@@ -14,11 +14,6 @@ import statistics
 import pylab
 from scipy import stats
 
-
-filePath = Path(__file__).parent.resolve()
-csvPath = os.path.join(filePath, "Media_Sheet_2022_C.csv")
-year = "2022"
-folderName2022 = year + "_Graphs"
 colorsArr = [
     "#B06161",
     "#F9B572",
@@ -42,16 +37,16 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    scores(inputFilePath, df)
-    # months(inputFilePath, df, year)
-    # ratings(inputFilePath, df)
-    # numOfRatings(inputFilePath, df)
-    # dateAndRatings(inputFilePath, df)  # TODO trendline
-    # runtimeScores(inputFilePath, df)
-    # budgetBoxOffice(inputFilePath, df)
+    # scores(inputFilePath, df, year)
+    months(inputFilePath, df, year)
+    # ratings(inputFilePath, df, year)
+    # numOfRatings(inputFilePath, df, year)
+    # dateAndRatings(inputFilePath, df, year)  # TODO trendline
+    # runtimeScores(inputFilePath, df, year)
+    # budgetBoxOffice(inputFilePath, df, year)
 
 
-def budgetBoxOffice(inputFilePath, df):
+def budgetBoxOffice(inputFilePath, df, year):
     #! the dot at the top of the plot is the movie Titanic
     budgetColumn = df["Budget (mil)"].to_numpy()
     boxOfficeColumn = df["Box Office"].to_numpy()
@@ -65,7 +60,7 @@ def budgetBoxOffice(inputFilePath, df):
     plt.scatter(newBudget, newBoxOffice, color="#AC87C5")
     plt.xlabel("Budget")
     plt.ylabel("Box Office")
-    plt.title("Budget vs Box Office")
+    plt.title(f"Budget vs Box Office ({year})")
 
     slope, intercept, rValue, pValue, stError = stats.linregress(
         newBudget, newBoxOffice
@@ -85,12 +80,14 @@ def budgetBoxOffice(inputFilePath, df):
         fontsize=10,
     )
     plt.tight_layout()
-    plt.savefig(folderName2022 + "/budget_box_office_scatter.png", bbox_inches="tight")
+    plt.savefig(
+        f"{year}_Graphs" + "/budget_box_office_scatter.png", bbox_inches="tight"
+    )
     plt.show()
     plt.close()
 
 
-def runtimeScores(inputFilePath, df):
+def runtimeScores(inputFilePath, df, year):
     scoreColumn = df["Score"].to_numpy()
     runtimeColumn = df["Run Time (min)"].to_numpy()
 
@@ -103,7 +100,7 @@ def runtimeScores(inputFilePath, df):
     plt.scatter(newScore, newRuntime, color="#FF90BC")
     plt.xlabel("Score")
     plt.ylabel("Runtime")
-    plt.title("Score vs Runtime")
+    plt.title(f"Score vs Runtime ({year})")
 
     slope, intercept, rValue, pValue, stError = stats.linregress(newScore, newRuntime)
     plt.plot(newScore, slope * newScore + intercept, color="#8EACCD")
@@ -113,12 +110,12 @@ def runtimeScores(inputFilePath, df):
         xycoords="figure fraction",
     )
     plt.tight_layout()
-    plt.savefig(folderName2022 + "/score_runtime_scatter.png", bbox_inches="tight")
+    plt.savefig(f"{year}_Graphs" + "/score_runtime_scatter.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
 
-def dateAndRatings(inputFilePath, df):
+def dateAndRatings(inputFilePath, df, year):
     monthMap = {
         "January": 1,
         "February": 2,
@@ -147,14 +144,14 @@ def dateAndRatings(inputFilePath, df):
     plt.gcf().autofmt_xdate()
     plt.xlabel("Release Date")
     plt.ylabel("Score")
-    plt.title("Scores by Date")
+    plt.title(f"Scores by Date ({year})")
     plt.tight_layout()
-    plt.savefig(folderName2022 + "/dates_scores_time_series.png", bbox_inches="tight")
+    plt.savefig(f"{year}_Graphs" + "/dates_scores_time_series.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
 
-def numOfRatings(inputFilePath, df):
+def numOfRatings(inputFilePath, df, year):
     ratingColumn = df["# of Ratings (Thou)"].to_numpy()
     trueArray = ratingColumn * 1000
     integerRatings = trueArray.astype("int").tolist()
@@ -168,16 +165,16 @@ def numOfRatings(inputFilePath, df):
     plt.hist(integerRatings, bins=bins, edgecolor="black", color="#F9B572")
     plt.xlabel("Number of Scores (millions)")
     plt.ylabel("Number Watched")
-    plt.title("Worldwide Number of Scores")
+    plt.title(f"Worldwide Number of Scores ({year})")
     plt.tight_layout()
     plt.savefig(
-        folderName2022 + "/number_of_ratings_histogram.png", bbox_inches="tight"
+        f"{year}_Graphs" + "/number_of_ratings_histogram.png", bbox_inches="tight"
     )
     plt.show()
     plt.close()
 
 
-def ratings(inputFilePath, df):
+def ratings(inputFilePath, df, year):
     ratingColumn = df["Rating"].to_numpy()
     ratingCounter = Counter()
     for rating in ratingColumn:
@@ -201,8 +198,8 @@ def ratings(inputFilePath, df):
         startangle=5,
         autopct="%1.0f%%",
     )
-    plt.title("4 Most Popular Ratings")
-    plt.savefig(folderName2022 + "/rating_pie_chart.png", bbox_inches="tight")
+    plt.title(f"4 Most Popular Ratings ({year})")
+    plt.savefig(f"{year}_Graphs" + "/rating_pie_chart.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -238,13 +235,13 @@ def months(inputFilePath, df, year):
     plt.bar(xValues, counts, color=colorsArr)
     plt.xlabel("Month")
     plt.ylabel("Number Watched")
-    plt.title(year + "Month Distribution")
-    plt.savefig(folderName2022 + "/months_histogram.png", bbox_inches="tight")
+    plt.title(f"Month Distribution ({year})")
+    plt.savefig(f"{year}_Graphs" + "/months_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
 
-def scores(inputFilePath, df):
+def scores(inputFilePath, df, year):
     scoreColumn = df["Score"]
     scoreSeries = scoreColumn.value_counts()
     indexArr = scoreSeries.index.to_numpy().tolist()
@@ -252,13 +249,22 @@ def scores(inputFilePath, df):
     plt.figure()
     plt.style.use("fivethirtyeight")
     plt.bar(indexArr, valuesArr, color=colorsArr)
-    plt.title("My Score Distribution")
+    plt.title(f"My Score Distribution ({year})")
     plt.xlabel("Scores")
     plt.ylabel("Number of Scores")
     plt.tight_layout()
-    plt.savefig(folderName2022 + "/scores_histogram.png", bbox_inches="tight")
+    plt.savefig(f"{year}_Graphs" + "/scores_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
 
-main(csvPath, year)
+numberOfYears = 3
+filePath = Path(__file__).parent.resolve()
+fileNames = []
+years = [2021, 2022, 2023]
+for i in range(numberOfYears):
+    fileNames.append(os.path.join(filePath, f"Media_Sheet_Movies_{years[i]}.csv"))
+
+# main(csvPath, year)
+for i in range(numberOfYears):
+    main(fileNames[i], str(years[i]))

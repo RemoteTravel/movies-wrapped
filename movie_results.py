@@ -39,8 +39,8 @@ def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
     # scores(inputFilePath, df, year)
     # months(inputFilePath, df, year)
-    ratings(inputFilePath, df, year)
-    # numOfRatings(inputFilePath, df, year)
+    # ratings(inputFilePath, df, year)
+    numOfRatings(inputFilePath, df, year)
     # dateAndRatings(inputFilePath, df, year)  # TODO trendline
     # runtimeScores(inputFilePath, df, year)
     # budgetBoxOffice(inputFilePath, df, year)

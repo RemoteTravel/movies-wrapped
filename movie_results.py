@@ -49,7 +49,6 @@ def budgetBoxOffice(inputFilePath, df, year):
     boxOfficeColumn = pd.to_numeric(boxOfficeColumn, errors="coerce").to_numpy()
     mask = ~np.isnan(budgetColumn) & ~np.isnan(boxOfficeColumn)
     newBudget = budgetColumn[mask]
-    print("newBudget type", type(newBudget))
     newBoxOffice = boxOfficeColumn[mask]
 
     plt.figure()

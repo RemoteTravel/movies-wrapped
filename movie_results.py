@@ -37,7 +37,7 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    # scores(inputFilePath, df, year)
+    scores(inputFilePath, df, year)
     months(inputFilePath, df, year)
     # ratings(inputFilePath, df, year)
     # numOfRatings(inputFilePath, df, year)
@@ -205,7 +205,7 @@ def ratings(inputFilePath, df, year):
 
 
 def months(inputFilePath, df, year):
-    dateColumn = df["End Date"].to_numpy()
+    dateColumn = df["End Date"].dropna().to_numpy()
     monthCounter = Counter()
     for date in dateColumn:
         dateLS = date.split()
@@ -242,7 +242,7 @@ def months(inputFilePath, df, year):
 
 
 def scores(inputFilePath, df, year):
-    scoreColumn = df["Score"]
+    scoreColumn = df["Score"].dropna()
     scoreSeries = scoreColumn.value_counts()
     indexArr = scoreSeries.index.to_numpy().tolist()
     valuesArr = scoreSeries.to_numpy().tolist()
@@ -258,13 +258,15 @@ def scores(inputFilePath, df, year):
     plt.close()
 
 
-numberOfYears = 3
+numberOfYears = 2
 filePath = Path(__file__).parent.resolve()
 fileNames = []
-years = [2021, 2022, 2023]
+startYear = 2021
 for i in range(numberOfYears):
-    fileNames.append(os.path.join(filePath, f"Media_Sheet_Movies_{years[i]}.csv"))
+    curYear = startYear + i
+    print("curYear", curYear)
+    fileNames.append(os.path.join(filePath, f"Media_Sheet_Movies_{curYear}.csv"))
 
-# main(csvPath, year)
 for i in range(numberOfYears):
-    main(fileNames[i], str(years[i]))
+    curYear = startYear + i
+    main(fileNames[i], str(curYear))

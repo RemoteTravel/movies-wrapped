@@ -40,10 +40,10 @@ def main(inputFilePath, year):
     # scores(inputFilePath, df, year)
     # months(inputFilePath, df, year)
     # ratings(inputFilePath, df, year)
-    numOfRatings(inputFilePath, df, year)
-    # dateAndRatings(inputFilePath, df, year)  # TODO trendline
+    # numOfRatings(inputFilePath, df, year) # TODO: Key error no column for 2021
+    # dateAndRatings(inputFilePath, df, year)  # TODO trendline / did the column fill out and have no NaNs for 2021?
     # runtimeScores(inputFilePath, df, year)
-    # budgetBoxOffice(inputFilePath, df, year)
+    budgetBoxOffice(inputFilePath, df, year)
 
 
 def budgetBoxOffice(inputFilePath, df, year):

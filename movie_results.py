@@ -6,12 +6,9 @@ from datetime import datetime, timedelta
 import numpy as np
 from pathlib import Path
 import os.path
-
-# import csv
 import pandas as pd
 from collections import Counter
 import statistics
-import pylab
 from scipy import stats
 
 colorsArr = [
@@ -38,12 +35,12 @@ pieColorsArr = [
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
     scores(inputFilePath, df, year)
-    # months(inputFilePath, df, year)
-    # ratings(inputFilePath, df, year)
-    # numOfRatings(inputFilePath, df, year)
-    # dateAndRatings(inputFilePath, df, year)
-    # runtimeScores(inputFilePath, df, year)
-    # budgetBoxOffice(inputFilePath, df, year)
+    months(inputFilePath, df, year)
+    ratings(inputFilePath, df, year)
+    numOfRatings(inputFilePath, df, year)
+    dateAndRatings(inputFilePath, df, year)
+    runtimeScores(inputFilePath, df, year)
+    budgetBoxOffice(inputFilePath, df, year)
 
 
 def budgetBoxOffice(inputFilePath, df, year):

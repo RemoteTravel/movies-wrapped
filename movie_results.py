@@ -1,8 +1,7 @@
 # Danny Street | 2022 Movie Wrapped | 12/23/23
 # * Contact me if you wish to see my data set
 from matplotlib import pyplot as plt
-from matplotlib import dates as mpl_dates
-from datetime import datetime, timedelta
+from datetime import datetime
 import numpy as np
 from pathlib import Path
 import os.path

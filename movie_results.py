@@ -41,7 +41,7 @@ def main(inputFilePath, year):
     # months(inputFilePath, df, year)
     # ratings(inputFilePath, df, year)
     # numOfRatings(inputFilePath, df, year)
-    dateAndRatings(inputFilePath, df, year)  # TODO trendline
+    # dateAndRatings(inputFilePath, df, year)
     # runtimeScores(inputFilePath, df, year)
     # budgetBoxOffice(inputFilePath, df, year)
 
@@ -53,6 +53,7 @@ def budgetBoxOffice(inputFilePath, df, year):
     boxOfficeColumn = pd.to_numeric(boxOfficeColumn, errors="coerce").to_numpy()
     mask = ~np.isnan(budgetColumn) & ~np.isnan(boxOfficeColumn)
     newBudget = budgetColumn[mask]
+    print("newBudget type", type(newBudget))
     newBoxOffice = boxOfficeColumn[mask]
 
     plt.figure()
@@ -136,7 +137,8 @@ def dateAndRatings(inputFilePath, df, year):
     ratingValues = []
     for idx, date in enumerate(releaseDateColumn):
         dateLS = date.split()
-        dates.append(datetime(int(dateLS[2]), monthMap[dateLS[0]], int(dateLS[1])))
+        curDatetime = datetime(int(dateLS[2]), monthMap[dateLS[0]], int(dateLS[1]))
+        dates.append(curDatetime)
         ratingValues.append(scoreColumn[idx])
     plt.figure()
     plt.style.use("seaborn-v0_8")
@@ -145,6 +147,7 @@ def dateAndRatings(inputFilePath, df, year):
     plt.xlabel("Release Date")
     plt.ylabel("Score")
     plt.title(f"Scores by Date ({year})")
+
     plt.tight_layout()
     plt.savefig(f"{year}_Graphs" + "/dates_scores_time_series.png", bbox_inches="tight")
     plt.show()

@@ -37,9 +37,9 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    scores(inputFilePath, df, year)
-    months(inputFilePath, df, year)
-    # ratings(inputFilePath, df, year)
+    # scores(inputFilePath, df, year)
+    # months(inputFilePath, df, year)
+    ratings(inputFilePath, df, year)
     # numOfRatings(inputFilePath, df, year)
     # dateAndRatings(inputFilePath, df, year)  # TODO trendline
     # runtimeScores(inputFilePath, df, year)
@@ -264,7 +264,6 @@ fileNames = []
 startYear = 2021
 for i in range(numberOfYears):
     curYear = startYear + i
-    print("curYear", curYear)
     fileNames.append(os.path.join(filePath, f"Media_Sheet_Movies_{curYear}.csv"))
 
 for i in range(numberOfYears):

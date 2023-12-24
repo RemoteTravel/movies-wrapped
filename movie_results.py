@@ -49,8 +49,8 @@ def main(inputFilePath, year):
 def budgetBoxOffice(inputFilePath, df, year):
     #! the dot at the top of the plot is the movie Titanic
     budgetColumn = df["Budget (mil)"].to_numpy()
-    boxOfficeColumn = df["Box Office"].to_numpy()
-
+    boxOfficeColumn = df["Box Office"]
+    boxOfficeColumn = pd.to_numeric(boxOfficeColumn, errors="coerce").to_numpy()
     mask = ~np.isnan(budgetColumn) & ~np.isnan(boxOfficeColumn)
     newBudget = budgetColumn[mask]
     newBoxOffice = boxOfficeColumn[mask]

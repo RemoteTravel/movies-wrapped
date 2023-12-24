@@ -37,7 +37,7 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    # scores(inputFilePath, df, year)
+    scores(inputFilePath, df, year)
     # months(inputFilePath, df, year)
     # ratings(inputFilePath, df, year)
     # numOfRatings(inputFilePath, df, year)

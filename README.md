@@ -29,14 +29,14 @@ This function shows the Worldwide Number of Scores (in millions) on the x-axis c
 
 ## ratings:
 
-This function shows the most four most popular Movie Ratings. The most common movie I watched was rated R.
+This function shows the most four most popular Movie Ratings. The most common movie I watched in 2021 was rated R.
 
 ## months:
 
 This function shows the Months I watched movies on the x-axis compared vs the Number of Movies on the y-axis.
-The most common month that I watched movies in is May with 52 movies.
+For 2021, the most common month that I watched movies in is May with 52 movies.
 
 ## scores:
 
 This function shows the movie Scores out of 10 on the x-axis compared vs the Number of Scores I gave on the y-axis.
-The most common scores I gave are 7 and 8 out of 10.
+For 2021, the most common scores I gave are 7 and 8 out of 10.

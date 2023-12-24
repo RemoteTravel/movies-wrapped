@@ -77,7 +77,7 @@ def budgetBoxOffice(inputFilePath, df, year):
     )
     plt.tight_layout()
     plt.savefig(
-        f"{year}_Graphs" + "/budget_box_office_scatter.png", bbox_inches="tight"
+        f"Graphs/{year}_Graphs" + "/budget_box_office_scatter.png", bbox_inches="tight"
     )
     plt.show()
     plt.close()
@@ -106,7 +106,9 @@ def runtimeScores(inputFilePath, df, year):
         xycoords="figure fraction",
     )
     plt.tight_layout()
-    plt.savefig(f"{year}_Graphs" + "/score_runtime_scatter.png", bbox_inches="tight")
+    plt.savefig(
+        f"Graphs/{year}_Graphs" + "/score_runtime_scatter.png", bbox_inches="tight"
+    )
     plt.show()
     plt.close()
 
@@ -144,7 +146,9 @@ def dateAndRatings(inputFilePath, df, year):
     plt.title(f"Scores by Date ({year})")
 
     plt.tight_layout()
-    plt.savefig(f"{year}_Graphs" + "/dates_scores_time_series.png", bbox_inches="tight")
+    plt.savefig(
+        f"Graphs/{year}_Graphs" + "/dates_scores_time_series.png", bbox_inches="tight"
+    )
     plt.show()
     plt.close()
 
@@ -166,7 +170,8 @@ def numOfRatings(inputFilePath, df, year):
     plt.title(f"Worldwide Number of Scores ({year})")
     plt.tight_layout()
     plt.savefig(
-        f"{year}_Graphs" + "/number_of_ratings_histogram.png", bbox_inches="tight"
+        f"Graphs/{year}_Graphs" + "/number_of_ratings_histogram.png",
+        bbox_inches="tight",
     )
     plt.show()
     plt.close()
@@ -197,7 +202,7 @@ def ratings(inputFilePath, df, year):
         autopct="%1.0f%%",
     )
     plt.title(f"4 Most Popular Ratings ({year})")
-    plt.savefig(f"{year}_Graphs" + "/rating_pie_chart.png", bbox_inches="tight")
+    plt.savefig(f"Graphs/{year}_Graphs" + "/rating_pie_chart.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -234,7 +239,7 @@ def months(inputFilePath, df, year):
     plt.xlabel("Month")
     plt.ylabel("Number Watched")
     plt.title(f"Month Distribution ({year})")
-    plt.savefig(f"{year}_Graphs" + "/months_histogram.png", bbox_inches="tight")
+    plt.savefig(f"Graphs/{year}_Graphs" + "/months_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -251,7 +256,7 @@ def scores(inputFilePath, df, year):
     plt.xlabel("Scores")
     plt.ylabel("Number of Scores")
     plt.tight_layout()
-    plt.savefig(f"{year}_Graphs" + "/scores_histogram.png", bbox_inches="tight")
+    plt.savefig(f"Graphs/{year}_Graphs" + "/scores_histogram.png", bbox_inches="tight")
     plt.show()
     plt.close()
 

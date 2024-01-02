@@ -34,13 +34,13 @@ pieColorsArr = [
 
 def main(inputFilePath, year):
     df = pd.read_csv(inputFilePath)
-    scores(inputFilePath, df, year)
-    months(inputFilePath, df, year)
+    # scores(inputFilePath, df, year)
+    # months(inputFilePath, df, year)
     ratings(inputFilePath, df, year)
-    numOfRatings(inputFilePath, df, year)
-    dateAndRatings(inputFilePath, df, year)
-    runtimeScores(inputFilePath, df, year)
-    budgetBoxOffice(inputFilePath, df, year)
+    # numOfRatings(inputFilePath, df, year)
+    # dateAndRatings(inputFilePath, df, year)
+    # runtimeScores(inputFilePath, df, year)
+    # budgetBoxOffice(inputFilePath, df, year)
 
 
 def budgetBoxOffice(inputFilePath, df, year):
@@ -183,22 +183,18 @@ def ratings(inputFilePath, df, year):
     ratingCounter = Counter()
     for rating in ratingColumn:
         ratingCounter[rating] += 1
-    ratings = list(ratingCounter.keys())
-    counts = list(ratingCounter.values())
-    newRatings = []
-    newCounts = []
-    for idx, count in enumerate(counts):
-        cutoff = 5
-        if year == "All":
-            cutoff = 15
-        if count > cutoff:
-            newRatings.append(ratings[idx])
-            newCounts.append(counts[idx])
+    countList = list(ratingCounter.keys())
+    ratings = np.array(countList, dtype="U")
+    counts = np.fromiter(ratingCounter.values(), dtype=int)
+    sortedIndices = np.argsort(counts)
+    indicesRev = np.flip(sortedIndices)
+    sortedRatings = ratings[indicesRev]
+    sortedCounts = counts[indicesRev]
     plt.figure()
     plt.style.use("fivethirtyeight")
     plt.pie(
-        newCounts,
-        labels=newRatings,
+        sortedCounts[:4],
+        labels=sortedRatings[:4],
         wedgeprops={"edgecolor": "black"},
         colors=pieColorsArr,
         shadow=True,

@@ -188,7 +188,10 @@ def ratings(inputFilePath, df, year):
     newRatings = []
     newCounts = []
     for idx, count in enumerate(counts):
-        if count > 5:
+        cutoff = 5
+        if year == "All":
+            cutoff = 15
+        if count > cutoff:
             newRatings.append(ratings[idx])
             newCounts.append(counts[idx])
     plt.figure()
@@ -202,7 +205,7 @@ def ratings(inputFilePath, df, year):
         startangle=5,
         autopct="%1.0f%%",
     )
-    plt.title(f"4 Most Popular Ratings ({year})")
+    plt.title(f"Most Popular Ratings ({year})")
     plt.savefig(f"Graphs/{year}_Graphs" + "/rating_pie_chart.png", bbox_inches="tight")
     # plt.show()
     plt.close()

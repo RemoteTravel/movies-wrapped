@@ -5,6 +5,7 @@ from datetime import datetime
 import numpy as np
 from pathlib import Path
 import os.path
+import csv
 import pandas as pd
 from collections import Counter
 import statistics
@@ -261,11 +262,36 @@ def scores(inputFilePath, df, year):
     plt.close()
 
 
+def mergeCSVs(folderPath):
+    with open("CSV_Files/Media_Sheet_Movies_All.csv", "w", newline="") as outfile:
+        writer = csv.writer(outfile)
+        seenRows = set()  # Track unique rows
+
+        for filename in os.listdir(folderPath):
+            if filename.endswith(".csv") and filename != "Media_Sheet_Movies_All.csv":
+                filePath = os.path.join(folderPath, filename)
+                try:
+                    with open(filePath, "r") as infile:
+                        reader = csv.reader(infile)
+                        for row in reader:
+                            if tuple(row) not in seenRows and tuple(row)[0] != "Movies":
+                                writer.writerow(row)
+                                seenRows.add(tuple(row))
+                except FileNotFoundError:
+                    print(f"Error: File not found: {filePath}")
+                except csv.Error as e:
+                    print(f"Error reading CSV file {filePath}: {e}")
+
+
 numberOfYears = 3
 filePath = Path(__file__).parent.resolve()
 csvFolderPath = os.path.join(filePath, "CSV_Files")
 startYear = 2021
 
+mergeCSVs(csvFolderPath)
+
 for i in range(numberOfYears):
     curYear = startYear + i
     main(os.path.join(csvFolderPath, f"Media_Sheet_Movies_{curYear}.csv"), str(curYear))
+
+main(os.path.join(csvFolderPath, f"Media_Sheet_Movies_All.csv"), "All")

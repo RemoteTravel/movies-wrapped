@@ -264,12 +264,8 @@ def scores(inputFilePath, df, year):
 numberOfYears = 3
 filePath = Path(__file__).parent.resolve()
 csvFolderPath = os.path.join(filePath, "CSV_Files")
-fileNames = []
 startYear = 2021
-for i in range(numberOfYears):
-    curYear = startYear + i
-    fileNames.append(os.path.join(csvFolderPath, f"Media_Sheet_Movies_{curYear}.csv"))
 
 for i in range(numberOfYears):
     curYear = startYear + i
-    main(fileNames[i], str(curYear))
+    main(os.path.join(csvFolderPath, f"Media_Sheet_Movies_{curYear}.csv"), str(curYear))

@@ -32,11 +32,14 @@ pieColorsArr = [
 ]
 
 
-def main(inputFilePath, year):
+def main(filePath, inputFilePath, year):
     df = pd.read_csv(inputFilePath)
+    graphPath = os.path.join(filePath, f"Graphs/{year}_Graphs")
+    if not os.path.exists(graphPath):
+        os.makedirs(graphPath)
     # scores(inputFilePath, df, year)
     # months(inputFilePath, df, year)
-    ratings(inputFilePath, df, year)
+    # ratings(inputFilePath, df, year)
     # numOfRatings(inputFilePath, df, year)
     # dateAndRatings(inputFilePath, df, year)
     # runtimeScores(inputFilePath, df, year)
@@ -291,6 +294,10 @@ mergeCSVs(csvFolderPath)
 
 for i in range(numberOfYears):
     curYear = startYear + i
-    main(os.path.join(csvFolderPath, f"Media_Sheet_Movies_{curYear}.csv"), str(curYear))
+    main(
+        filePath,
+        os.path.join(csvFolderPath, f"Media_Sheet_Movies_{curYear}.csv"),
+        str(curYear),
+    )
 
-main(os.path.join(csvFolderPath, f"Media_Sheet_Movies_All.csv"), "All")
+main(filePath, os.path.join(csvFolderPath, f"Media_Sheet_Movies_All.csv"), "All")
